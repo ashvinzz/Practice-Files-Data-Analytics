@@ -1,0 +1,65 @@
+DDL (Data Definition Language):
+
+Purpose: Define or modify the structure of the database (e.g., schemas, tables, indexes).
+
+CREATE (to create databases, tables, indexes, etc.)
+ALTER (to modify an existing database object)
+DROP (to delete objects)
+TRUNCATE (to remove all records from a table)
+RENAME (to rename an object)
+
+
+==================================
+
+
+DML (Data Manipulation Language):
+DQL (Data Query Language)
+
+Purpose: Manipulate the data stored in the database
+
+SELECT (to query data)
+
+INSERT (to add new records)
+
+UPDATE (to modify existing records)
+
+DELETE (to remove records)
+
+========================================
+
+DCL (Data Control Language):
+
+Purpose: Control access to data and database objects.
+
+GRANT (to give user access privileges)
+GRANT SELECT, INSERT ON Employees TO 'user1'@'localhost';
+
+REVOKE (to take away privileges)
+REVOKE INSERT ON Employees FROM 'user1'@'localhost';
+
+
+============================================
+
+TCL (Transaction Control Language):
+
+Purpose: Manage transactions within the database.
+
+
+COMMIT (to save transactions permanently)
+START TRANSACTION;
+INSERT INTO Employees VALUES (2, 'Jane Smith', 'HR', 60000.00);
+COMMIT;
+
+ROLLBACK (to undo transactions)
+START TRANSACTION;
+UPDATE Employees SET Salary = 65000.00 WHERE EmpID = 2;
+ROLLBACK; -- Undo Update
+
+SAVEPOINT (to set a point within a transaction to which you can roll back)
+START TRANSACTION;
+UPDATE Employees SET Salary = 65000.00 WHERE EmpID = 2;
+SAVEPOINT sp1;
+UPDATE Employees SET Salary = 70000.00 WHERE EmpID = 2;
+ROLLBACK TO sp1; -- Undo second update but keep first update
+COMMIT;
+
